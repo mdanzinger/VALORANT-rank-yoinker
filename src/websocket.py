@@ -93,12 +93,7 @@ class Ws:
                         agent = self.colors.get_agent_from_uuid(self.player_data[message['puuid']]['agent'].lower())
                         name = f"{message['game_name']}#{message['game_tag']}"
                         if self.player_data[message['puuid']]['streamer_mode'] and self.hide_names and message['puuid'] not in self.player_data["ignore"]:
-                            if agent == "":
-                                agent_str = ""
-                            else:
-                                agent_str = f" ({agent})"
-			    self.print_message(f"{chat_prefix} {color(name, clr)}{agent_str}: {message['body']}")
-
+                            self.print_message(f"{chat_prefix} {color(self.colors.escape_ansi(agent), clr)}: {message['body']}")
                             self.server.send_payload("chat",{
                                 "time": message["time"],
                                 "puuid": player,
