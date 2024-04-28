@@ -256,7 +256,7 @@ try:
                     if player["Subject"] == Requests.puuid:
                         if cfg.get_feature_flag("discord_rpc"):
                             rpc.set_data({"agent": player["CharacterID"]})
-                    players_data.update({player["Subject"]: {"team": player["TeamID"], "agent": player["CharacterID"], "streamer_mode": false}})
+                    players_data.update({player["Subject"]: {"team": player["TeamID"], "agent": player["CharacterID"], "streamer_mode": False}})
                 Wss.set_player_data(players_data)
 
                 try:
