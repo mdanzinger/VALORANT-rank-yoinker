@@ -256,7 +256,7 @@ try:
                     if player["Subject"] == Requests.puuid:
                         if cfg.get_feature_flag("discord_rpc"):
                             rpc.set_data({"agent": player["CharacterID"]})
-                    players_data.update({player["Subject"]: {"team": player["TeamID"], "agent": player["CharacterID"], "streamer_mode": player["PlayerIdentity"]["Incognito"]}})
+                    players_data.update({player["Subject"]: {"team": player["TeamID"], "agent": player["CharacterID"], "streamer_mode": false}})
                 Wss.set_player_data(players_data)
 
                 try:
@@ -311,7 +311,7 @@ try:
                                         if m["match_id"] != coregame.match_id and m["match_id"] not in m_set:
                                             times += 1
                                             m_set += (m["match_id"],)
-                                    if player["PlayerIdentity"]["Incognito"] == False:
+                                    if player["PlayerIdentity"]["FakVal"] == False:
                                         already_played_with.append(
                                                 {
                                                     "times": times,
@@ -319,15 +319,10 @@ try:
                                                     "agent": curr_player_stat["agent"],
                                                     "time_diff": time.time() - curr_player_stat["epoch"]
                                                 })
-                                    else:
-                                        if player["TeamID"] == allyTeam:
-                                            team_string = "your"
-                                        else:
-                                            team_string = "enemy"
                                         already_played_with.append(
                                                 {
                                                     "times": times,
-                                                    "name": agent_dict[player["CharacterID"].lower()] + " on " + team_string + " team",
+                                                    "name": curr_player_stat["name"],
                                                     "agent": curr_player_stat["agent"],
                                                     "time_diff": time.time() - curr_player_stat["epoch"]
                                                 })
@@ -367,11 +362,6 @@ try:
 
 
 
-                        if player["PlayerIdentity"]["Incognito"]:
-                            Namecolor = colors.get_color_from_team(player["TeamID"],
-                                                            names[player["Subject"]],
-                                                            player["Subject"], Requests.puuid, agent=player["CharacterID"], party_members=partyMembersList)
-                        else:
                             Namecolor = colors.get_color_from_team(player["TeamID"],
                                                             names[player["Subject"]],
                                                             player["Subject"], Requests.puuid, party_members=partyMembersList)
@@ -547,7 +537,7 @@ try:
                         kd = ppstats["kd"]
 
                         player_level = player["PlayerIdentity"].get("AccountLevel")
-                        if player["PlayerIdentity"]["Incognito"]:
+                        if player["PlayerIdentity"]["FalVal"]:
                             NameColor = colors.get_color_from_team(pregame_stats['Teams'][0]['TeamID'],
                                                             names[player["Subject"]],
                                                             player["Subject"], Requests.puuid, agent=player["CharacterID"], party_members=partyMembersList)
