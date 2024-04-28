@@ -319,13 +319,7 @@ try:
                                                     "agent": curr_player_stat["agent"],
                                                     "time_diff": time.time() - curr_player_stat["epoch"]
                                                 })
-                                        already_played_with.append(
-                                                {
-                                                    "times": times,
-                                                    "name": curr_player_stat["name"],
-                                                    "agent": curr_player_stat["agent"],
-                                                    "time_diff": time.time() - curr_player_stat["epoch"]
-                                                })
+                                    
 
                         party_icon = ''
                         # set party premade icon
@@ -362,9 +356,9 @@ try:
 
 
 
-                            Namecolor = colors.get_color_from_team(player["TeamID"],
-                                                            names[player["Subject"]],
-                                                            player["Subject"], Requests.puuid, party_members=partyMembersList)
+                        Namecolor = colors.get_color_from_team(player["TeamID"],
+                                                        names[player["Subject"]],
+                                                        player["Subject"], Requests.puuid, party_members=partyMembersList)
                         if lastTeam != player["TeamID"]:
                             if lastTeamBoolean:
                                 table.add_empty_row()
