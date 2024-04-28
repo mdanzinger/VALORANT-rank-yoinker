@@ -97,6 +97,8 @@ class Ws:
                                 agent_str = ""
                             else:
                                 agent_str = f" ({agent})"
+			    self.print_message(f"{chat_prefix} {color(name, clr)}{agent_str}: {message['body']}")
+
                             self.server.send_payload("chat",{
                                 "time": message["time"],
                                 "puuid": player,
