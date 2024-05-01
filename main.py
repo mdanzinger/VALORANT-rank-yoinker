@@ -530,14 +530,10 @@ try:
                         kd = ppstats["kd"]
 
                         player_level = player["PlayerIdentity"].get("AccountLevel")
-                        if player["PlayerIdentity"]["FalVal"]:
-                            NameColor = colors.get_color_from_team(pregame_stats['Teams'][0]['TeamID'],
-                                                            names[player["Subject"]],
-                                                            player["Subject"], Requests.puuid, agent=player["CharacterID"], party_members=partyMembersList)
-                        else:
-                            NameColor = colors.get_color_from_team(pregame_stats['Teams'][0]['TeamID'],
-                                                            names[player["Subject"]],
-                                                            player["Subject"], Requests.puuid, party_members=partyMembersList)
+                       
+                        NameColor = colors.get_color_from_team(pregame_stats['Teams'][0]['TeamID'],
+                                                        names[player["Subject"]],
+                                                        player["Subject"], Requests.puuid, party_members=partyMembersList)
 
                         if player["PlayerIdentity"]["HideAccountLevel"]:
                             if player["Subject"] == Requests.puuid or player["Subject"] in partyMembersList or hide_levels == False:
