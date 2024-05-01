@@ -311,14 +311,13 @@ try:
                                         if m["match_id"] != coregame.match_id and m["match_id"] not in m_set:
                                             times += 1
                                             m_set += (m["match_id"],)
-                                    if player["PlayerIdentity"]["FakVal"] == False:
-                                        already_played_with.append(
-                                                {
+                                    already_played_with.append(
+                                            {
                                                     "times": times,
                                                     "name": curr_player_stat["name"],
                                                     "agent": curr_player_stat["agent"],
                                                     "time_diff": time.time() - curr_player_stat["epoch"]
-                                                })
+                                            })
                                     
 
                         party_icon = ''
